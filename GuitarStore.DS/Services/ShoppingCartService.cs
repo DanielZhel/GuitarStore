@@ -31,7 +31,7 @@ namespace GuitarStore.DS.Services
             session.SetString("CartId", shopCartId);
             return new ShopCart() { ShopCartId = shopCartId };
         }
-       //dwgrb
+       //try to add
         public void AddToCart(Item item)
         {
             _context.ShopCartItems.Add(new ShopCartItem
