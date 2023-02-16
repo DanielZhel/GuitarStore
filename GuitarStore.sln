@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarStore", "WebApplication1\GuitarStore.csproj", "{4AA55AC7-B68B-46F5-82D0-92115E164C20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarStore.EF", "StoreDb\GuitarStore.EF.csproj", "{42EC890E-8BD6-4E4F-AE6E-441A8FC284C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreDb", "StoreDb\StoreDb.csproj", "{42EC890E-8BD6-4E4F-AE6E-441A8FC284C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarStore", "GuitarStore\GuitarStore.csproj", "{F8447D28-B63B-40FB-AC1B-BE701B9B4B79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarStoreWithAuth", "GuitarStoreWithAuth\GuitarStoreWithAuth.csproj", "{0BD6D3FC-4B0B-451E-BDC2-05C5DC5B754D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarStore.Entities", "GuitarStore.Entities\GuitarStore.Entities.csproj", "{41D5EDF2-8073-4634-923D-9766D91696F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarStore.DS", "GuitarStore.DS\GuitarStore.DS.csproj", "{CA738938-8596-44DD-8C0A-7FDEBDF9F68B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4AA55AC7-B68B-46F5-82D0-92115E164C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AA55AC7-B68B-46F5-82D0-92115E164C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AA55AC7-B68B-46F5-82D0-92115E164C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AA55AC7-B68B-46F5-82D0-92115E164C20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{42EC890E-8BD6-4E4F-AE6E-441A8FC284C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{42EC890E-8BD6-4E4F-AE6E-441A8FC284C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42EC890E-8BD6-4E4F-AE6E-441A8FC284C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42EC890E-8BD6-4E4F-AE6E-441A8FC284C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BD6D3FC-4B0B-451E-BDC2-05C5DC5B754D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BD6D3FC-4B0B-451E-BDC2-05C5DC5B754D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BD6D3FC-4B0B-451E-BDC2-05C5DC5B754D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BD6D3FC-4B0B-451E-BDC2-05C5DC5B754D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8447D28-B63B-40FB-AC1B-BE701B9B4B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8447D28-B63B-40FB-AC1B-BE701B9B4B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8447D28-B63B-40FB-AC1B-BE701B9B4B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8447D28-B63B-40FB-AC1B-BE701B9B4B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41D5EDF2-8073-4634-923D-9766D91696F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D5EDF2-8073-4634-923D-9766D91696F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41D5EDF2-8073-4634-923D-9766D91696F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41D5EDF2-8073-4634-923D-9766D91696F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA738938-8596-44DD-8C0A-7FDEBDF9F68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA738938-8596-44DD-8C0A-7FDEBDF9F68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA738938-8596-44DD-8C0A-7FDEBDF9F68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA738938-8596-44DD-8C0A-7FDEBDF9F68B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

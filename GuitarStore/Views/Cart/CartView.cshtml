@@ -1,0 +1,11 @@
+﻿@model List<ShopCartItem>
+<div>
+    @foreach (var item in Model)
+    {
+        <div class="alert alert-warning mt-3">
+            <b>Product @item.Price</b> 
+        </div>
+    }
+
+    <div class="btn btn-danger" asp-controller="">Pay</div>
+</div>

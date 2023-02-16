@@ -1,0 +1,20 @@
+﻿ @model IEnumerable<Item>
+<h1>Products</h1>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (var item in Model)
+        {
+            <div class="col-lg-4">
+            
+                <img class="img-thumbnail" src="@item.Image" width="150" height="150" alt="@item.ModelName" />
+                <h2> @item.Manufacturer @item.ModelName</h2>
+                <p>Price: @item.Price $</p>
+                
+                <p><a class="btn btn-warning" asp-controller="Cart" asp-action="AddToCart" asp-route-itemId="@item.Id">Add To Cart</a></p>
+            </div>
+        }
+    }
+</div>
+
+
+

@@ -3,6 +3,7 @@ using GuitarStore.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuitarStore.EF.Migrations
 {
     [DbContext(typeof(GuitarStoreDbContext))]
-    partial class GuitarStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230215192839_DbCreate")]
+    partial class DbCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +56,7 @@ namespace GuitarStore.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Items", (string)null);
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("GuitarStore.Entities.Entities.ShopCartItem", b =>
@@ -78,7 +81,7 @@ namespace GuitarStore.EF.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("ShopCartItems", (string)null);
+                    b.ToTable("ShopCartItems");
                 });
 
             modelBuilder.Entity("GuitarStore.Entities.Entities.ShopCartItem", b =>
