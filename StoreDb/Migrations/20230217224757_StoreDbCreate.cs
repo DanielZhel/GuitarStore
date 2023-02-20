@@ -5,7 +5,7 @@
 namespace GuitarStore.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class DbCreate : Migration
+    public partial class StoreDbCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

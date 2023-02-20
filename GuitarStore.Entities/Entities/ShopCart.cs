@@ -10,7 +10,6 @@ namespace GuitarStore.Entities.Entities
 {
     public class ShopCart
     {
-        [AllowNull]
         public string ShopCartId { get; set; }
         public List<ShopCartItem> ShopCartItems { get; set; }
 

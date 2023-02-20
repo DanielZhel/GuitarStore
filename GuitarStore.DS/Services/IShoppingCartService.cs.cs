@@ -12,6 +12,8 @@ namespace GuitarStore.DS.Services
 {
     public interface IShoppingCartService
     {
-        
+        public Task AddToCart(string shopCartId, int itemId);
+        public Task RemoveFromCart( int itemId);
+        public Task<List<ShopCartItem>> GetShopCartItems(string id);
     }
 }

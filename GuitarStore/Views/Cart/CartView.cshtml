@@ -1,11 +1,33 @@
 ﻿@model List<ShopCartItem>
-<div>
-    @foreach (var item in Model)
-    {
-        <div class="alert alert-warning mt-3">
-            <b>Product @item.Price</b> 
+<div> 
+    @if(Model !=null ){
+        @foreach (var shopCartItem in Model)
+        {
+            <div class="alert alert-warning mt-3">
+                <p>Manufacturer: @shopCartItem.Manufacturer</p>
+                <p>Manufacturer: @shopCartItem.ModelName </p>
+                <p>Manufacturer: @shopCartItem.Price</p>
+                <p>Manufacturer: @shopCartItem.Descripton </p>
+                <p>
+                    <a class="btn btn-warning" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-shopCartItemId="@shopCartItem.Id">Delete</a>
+                </p>
+            </div>
+        }
+    }
+    else{
+        <div class="alert alert-info mt-3">
+            <p>Your shop cart is empty:(</p>
         </div>
     }
-
+    @{
+        decimal price=0;
+        if(Model != null){
+            foreach (var item in Model)
+            {
+                price += item.Price;
+            }
+        }
+    }
+    <p4>TotalPrice: @price </p4>
     <div class="btn btn-danger" asp-controller="">Pay</div>
 </div>

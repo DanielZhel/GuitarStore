@@ -1,51 +1,61 @@
-﻿using GuitarStore.EF;
+﻿using GuitarStore.EF.GuitarStoreDb.Context;
 using GuitarStore.Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GuitarStore.DS.Services
 {
-    public class ShoppingCartService
+    public class ShoppingCartService: IShoppingCartService
     {
 
-        private GuitarStoreDbContext _context;
-        public ShoppingCartService(GuitarStoreDbContext context)
+        private IGuitarStoreDbContext _context;
+        public ShoppingCartService(IGuitarStoreDbContext context)
         {
             _context = context;
         }
-
-        public string ShopCartId { get; set; }
-        public List <ShopCartItem> CartItemsList { get; set; }
-        public static ShopCart GetCart(IServiceProvider services)
+        public async Task AddToCart(string shopCartId, int itemId)
         {
-            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            var context = services.GetService<GuitarStoreDbContext>();
-            string shopCartId = /*session.GetString("CartId") ??*/ Guid.NewGuid().ToString();
-
-            session.SetString("CartId", shopCartId);
-            return new ShopCart() { ShopCartId = shopCartId };
-        }
-       //try to add
-        public void AddToCart(Item item)
-        {
-            _context.ShopCartItems.Add(new ShopCartItem
+            var item = _context.Items.Where(i => i.Id == itemId).Single();
+            if (item != null)
             {
-                ShopCartId = ShopCartId,
-                Item = item
-            });
-
+                var shopCartItem = new ShopCartItem
+                { 
+                    ShopCartId = shopCartId,
+                    Image = item.Image,
+                    ModelName = item.ModelName,
+                    Descripton = item.Descripton,
+                    Manufacturer =item.Manufacturer,
+                    Price = item.Price,
+                    ItemId = item.Id
+                };
+                _context.ShopCartItems.Add(shopCartItem);
+                
+            }
             _context.SaveChanges();
         }
-
-        public List<ShopCartItem> getShopItems()
+        public async Task<List<ShopCartItem>> GetShopCartItems(string id)
         {
-            return _context.ShopCartItems.Where(c => c.ShopCartId == ShopCartId).Include(s => s.Item).ToList();
+            
+            var shopCartItemList = _context.ShopCartItems.Where(c => c.ShopCartId == id).ToList();
+            
+            return shopCartItemList;
+        }
+
+        public async Task RemoveFromCart (int shopCartItemId)
+        {
+            var item = _context.ShopCartItems.Where(i => i.Id == shopCartItemId).Single();
+
+            _context.ShopCartItems.Remove(item);
+            _context.SaveChanges();
         }
     }
 }

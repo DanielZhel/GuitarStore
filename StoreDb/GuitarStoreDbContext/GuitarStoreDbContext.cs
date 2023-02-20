@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GuitarStore.Entities.Entities;
 using System.Numerics;
+using System;
 
-namespace GuitarStore.EF
+namespace GuitarStore.EF.GuitarStoreDb.Context
 {
-    public class GuitarStoreDbContext : DbContext
+    public class GuitarStoreDbContext : DbContext, IGuitarStoreDbContext
     {
         public GuitarStoreDbContext(DbContextOptions opts) : base(opts)
         {
@@ -17,12 +18,15 @@ namespace GuitarStore.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+
 
         }
-
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ShopCartItem> ShopCartItems { get; set; }
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();  
+        }
 
     }
 }

@@ -1,13 +1,13 @@
 ﻿using GuitarStore.Entities.Entities;
-using GuitarStore.EF;
 using Microsoft.EntityFrameworkCore;
+using GuitarStore.EF.GuitarStoreDb.Context;
 
 namespace GuitarStore.DS.Services
 {
     public class StoreService : IStoreService
     {
-        private readonly GuitarStoreDbContext _guitarStoreContext;
-        public StoreService(GuitarStoreDbContext context)
+        private readonly IGuitarStoreDbContext _guitarStoreContext;
+        public StoreService(IGuitarStoreDbContext context)
         {
             _guitarStoreContext = context;
 
