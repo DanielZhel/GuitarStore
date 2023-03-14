@@ -5,6 +5,7 @@ using System.Reflection;
 namespace GuitarStore.Controllers
 {
     [Authorize]
+    
     public class AdminController : Controller
     {
         

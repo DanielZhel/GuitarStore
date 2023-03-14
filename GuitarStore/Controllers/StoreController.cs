@@ -1,8 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
 using GuitarStore.DS.Services;
 
 namespace WebApplication1.Controllers

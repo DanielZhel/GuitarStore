@@ -1,0 +1,30 @@
+﻿@model List<Order>
+<div>
+    @if (Model != null)
+    {
+        foreach (var order in Model) 
+        {
+            <div class="alert alert-warning mt-3">
+                <p>Phone number: @order.PhoneNumber</p>
+                <p>Address: @order.Address</p>
+                <p>Price: @order.Price</p>
+                <p>Products:</p>
+                <div class="alert alert-info mt-3">
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <p>Manufacturer: @item.Item.Manufacturer</p>
+                        <p>Model name: @item.Item.ModelName</p>
+                    }
+                </div>
+                
+                
+            </div>
+        }
+        
+    }
+    else
+    {
+    <p class="alert alert-info mt-3">Create order in Cart</p>
+    }
+    
+</div>

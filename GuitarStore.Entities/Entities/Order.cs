@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static GuitarStore.Entities.Entities.Item;
 
 namespace GuitarStore.Entities.Entities
 {
-    public class ShopCartItem
+    public class Order
     {
         [Key]
-        public int Id { get; set; }
-        public Item Item { get; set; } = new Item();
-        public string SessionId { get; set; }
         public int OrderId { get; set; }
+        public string SessionId { get; set; }
+        public decimal Price { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public List<ShopCartItem> OrderItems { get; set; } = new List<ShopCartItem>();
+
     }
 }

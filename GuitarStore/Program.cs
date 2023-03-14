@@ -1,9 +1,5 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using GuitarStore.DS.Services;
 using Microsoft.AspNetCore.Identity;
 using GuitarStore.DS.Application;
-using GuitarStore.EF.GuitarStoreDb.Context;
 using GuitarStore.EF.AuthDb.Context;
 using GuitarStore.EF.Application;
 
@@ -11,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-GuitarStoreDSExtension.Services(builder.Services);
-GuitarStoreEFExtention.Services(builder.Services);
+GuitarStoreDSExtension.GuitarStoreDSServices(builder.Services);
+GuitarStoreEFExtention.GuitarStoreDbServices(builder.Services, builder.Configuration);
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AuthDbContext>();

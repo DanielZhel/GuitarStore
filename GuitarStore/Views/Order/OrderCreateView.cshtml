@@ -1,0 +1,23 @@
+﻿@model List<ShopCartItem>
+<form asp-controller="Order" asp-action="CreateOrder" method="post">
+    <div class="alert alert-warning mt-3">
+        <label>Address:</label><br />
+        <input type="text" name="address" /><br /><br />
+        <label>Phone Number:</label><br />
+        <input type="text" name="phoneNumber" /><br /><br />
+        <input type="submit" value="Submit" /><br /><br />
+    </div>
+    
+</form>
+<div>
+    <p2>Your products:</p2>
+    @foreach(var item in Model)
+    {
+        <div class="alert alert-info mt-3">
+            <p>Manufacturer: @item.Item.Manufacturer</p>
+            <p>ModelName: @item.Item.ModelName</p>
+            <p>Price: @item.Item.Price</p>
+        </div>
+        
+    }
+</div>

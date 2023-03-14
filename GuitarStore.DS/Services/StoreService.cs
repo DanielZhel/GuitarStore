@@ -7,19 +7,17 @@ namespace GuitarStore.DS.Services
     public class StoreService : IStoreService
     {
         private readonly IGuitarStoreDbContext _guitarStoreContext;
-        public StoreService(IGuitarStoreDbContext context)
+        public StoreService(IGuitarStoreDbContext guitarStoreContext)
         {
-            _guitarStoreContext = context;
+            _guitarStoreContext = guitarStoreContext;
 
         }
-
-
         public async Task<IEnumerable<Item>> GetAllItems()
         {
             var allItems = await _guitarStoreContext.Items.ToListAsync();
             return allItems;
         }
 
-        
+       
     }
 }

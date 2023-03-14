@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="bootstrap" Version="5.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
@@ -30,6 +31,10 @@
     <ProjectReference Include="..\GuitarStore.DS\GuitarStore.DS.csproj" />
     <ProjectReference Include="..\GuitarStore.Entities\GuitarStore.Entities.csproj" />
     <ProjectReference Include="..\StoreDb\GuitarStore.EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

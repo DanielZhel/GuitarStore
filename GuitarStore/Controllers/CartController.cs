@@ -20,29 +20,26 @@ namespace GuitarStore.Controllers
         }
         public async Task<IActionResult> CartView()
         {
-            var cartId = HttpContext.Session.GetString("CartId");
-            var items = await _shopService.GetShopCartItems(cartId);
-
+            var sessionId = HttpContext.Session.GetString("SessionId");
+            var items = await _shopService.GetShopCartItems(sessionId);
             return View(items);
 
         }
 
         public async Task<RedirectToActionResult> AddToCart(int itemId)
         {
-            
-            if (HttpContext.Session.GetString("CartId") == null)
+            if (HttpContext.Session.GetString("SessionId") == null)
             {
-                Guid newCartId = Guid.NewGuid();
-                HttpContext.Session.SetString("CartId", newCartId.ToString());
-                await _shopService.AddToCart(newCartId.ToString(), itemId);
-                
+                Guid sessionId = Guid.NewGuid();
+                HttpContext.Session.SetString("SessionId", sessionId.ToString());
+                await _shopService.AddToCart(sessionId.ToString(), itemId);
             }
             else
             {
-                var cartId = HttpContext.Session.GetString("CartId");
+                var cartId = HttpContext.Session.GetString("SessionId");
                 await _shopService.AddToCart(cartId, itemId);
-
             }
+            
             return RedirectToAction("CartView");
         }
         public async Task<RedirectToActionResult> RemoveFromCart(int shopCartItemId)

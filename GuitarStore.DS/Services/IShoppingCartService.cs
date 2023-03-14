@@ -16,4 +16,4 @@ namespace GuitarStore.DS.Services
         public Task RemoveFromCart( int itemId);
         public Task<List<ShopCartItem>> GetShopCartItems(string id);
     }
-}
+ }
