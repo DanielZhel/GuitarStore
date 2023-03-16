@@ -3,6 +3,7 @@ using GuitarStore.EF.GuitarStoreDb.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuitarStore.EF.Migrations
 {
     [DbContext(typeof(GuitarStoreDbContext))]
-    partial class GuitarStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230316163209_AddUserLoginOrderTable")]
+    partial class AddUserLoginOrderTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,6 +77,10 @@ namespace GuitarStore.EF.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("SessionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserLogin")
                         .IsRequired()

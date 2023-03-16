@@ -1,10 +1,8 @@
 ﻿using GuitarStore.EF.GuitarStoreDb.Context;
 using GuitarStore.Entities.Entities;
-using GuitarStore.Models.Mapping;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
-namespace GuitarStore.DS.Services
+namespace GuitarStore.DS.StoreServices
 {
     public class OrderService : IOrderService
     {
@@ -14,12 +12,12 @@ namespace GuitarStore.DS.Services
             _guitarStoreDbContext = guitarStoreDbContext;
         }
 
-        public async Task CreateOrder(string address, string phoneNumber, string sessionId)
+        public async Task CreateOrder(string address, string phoneNumber, string sessionId, string userLogin)
         {
             var order = new Order();
             order.Address = address;
             order.PhoneNumber = phoneNumber;
-            order.SessionId = sessionId;
+            order.UserLogin = userLogin;
             
             foreach (var orderItem in _guitarStoreDbContext.ShopCartItems.Where(x => x.SessionId == sessionId && x.OrderId == 0).Include(x => x.Item))
             {
@@ -32,22 +30,16 @@ namespace GuitarStore.DS.Services
         }
         public async Task<List<ShopCartItem>> GetOrderItems(string sessionId)
         {
-            List<ShopCartItem> orderItems = new List<ShopCartItem>();
-            foreach (var item in _guitarStoreDbContext.ShopCartItems.Where(x => x.SessionId == sessionId && x.OrderId == 0).Include(x => x.Item).ToList())
-            {
-                orderItems.Add(item);
-            }
-            
-            return orderItems;
+            var orderItemList = _guitarStoreDbContext.ShopCartItems.Where(x => x.SessionId == sessionId && x.OrderId == 0).Include(x => x.Item).ToList();
+            return orderItemList;
         }
 
-        public async Task<List<Order>> GetOrders(string sessionId)
+        public async Task<List<Order>> GetOrders(string userLogin)
         {
-            var orders = _guitarStoreDbContext.Orders.Where(x => x.SessionId == sessionId).Include(x => x.OrderItems).ThenInclude(x => x.Item).ToList();
+            var orders = _guitarStoreDbContext.Orders.Where(x => x.UserLogin == userLogin).Include(x => x.OrderItems).ThenInclude(x => x.Item).ToList();
            
             return orders;
         }
 
-        
     }
 }

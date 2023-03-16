@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using GuitarStore.EF.GuitarStoreDb.Context;
 
-namespace GuitarStore.DS.Services
+namespace GuitarStore.DS.StoreServices
 {
     public class StoreService : IStoreService
     {

@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using GuitarStore.DS.Services;
+using GuitarStore.DS.StoreServices;
 
 namespace WebApplication1.Controllers
 {
     public class StoreController : Controller
     {
-        private readonly ILogger<StoreController> _logger;
         private readonly IStoreService _storeService;
-        public StoreController(ILogger<StoreController> logger, IStoreService storeService)
+        public StoreController(IStoreService storeService)
         {
-            _logger = logger;
             _storeService = storeService;
         }
         

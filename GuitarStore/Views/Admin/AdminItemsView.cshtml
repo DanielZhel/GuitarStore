@@ -1,0 +1,29 @@
+﻿@model List<Item>
+<div>
+    @if (Model.Count != 0)
+    {
+
+        @foreach (var item in Model)
+        {
+            <div class="alert alert-warning mt-3">
+                <p>Manufacturer: @item.Manufacturer</p>
+                <p>ModelName: @item.ModelName</p>
+                <p>Price: @item.Price</p>
+                <p>
+                    <a class="btn btn-warning" asp-controller="Admin" asp-action="RemoveItem" asp-route-itemId="@item.Id">Delete</a>
+                </p>
+            </div>
+        }
+        <p>
+            <a class="btn btn-warning" asp-controller="Admin" asp-action="AddItemView">Create new item</a>
+        </p>
+    }
+    else
+    {
+        <div class="alert alert-info mt-3">
+            <p>Your shop cart is empty:(</p>
+        </div>
+    }
+
+
+</div>

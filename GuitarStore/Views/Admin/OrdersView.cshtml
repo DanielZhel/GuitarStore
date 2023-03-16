@@ -1,0 +1,32 @@
+﻿@model List<GuitarStore.Entities.Entities.Order>
+
+@{
+    ViewData["Title"] = "OrdersView";
+}
+
+<h1>Orders View</h1>
+@foreach (var order in Model)
+{
+    <div class="alert alert-warning mt-3">
+        <p>Order Id: @order.OrderId</p>
+        <p>User Login: @order.UserLogin</p>
+        <p>Order Price: @order.Price</p>
+        <p>Phone Number: @order.PhoneNumber</p>
+        <p>Phone Number: @order.Address</p>
+         @foreach(var item in order.OrderItems)
+         {
+            <div class="alert alert-info mt-3">
+                 <p>Manufacturer: @item.Item.Manufacturer</p>
+                 <p>Model Name: @item.Item.ModelName</p>
+            </div>
+         }
+        <p>
+            <a class="btn btn-warning" asp-controller="Admin" asp-action="RemoveOrder" asp-route-orderId="@order.OrderId">Delete</a>
+        </p>
+    </div>
+    
+    
+}
+<div>
+    <a asp-controller="Admin" asp-action="AdminView">Back to Admin View</a>
+</div>

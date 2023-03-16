@@ -1,6 +1,6 @@
 ﻿@model List<Order>
 <div>
-    @if (Model != null)
+    @if (Model.Count != 0)
     {
         foreach (var order in Model) 
         {
@@ -9,14 +9,13 @@
                 <p>Address: @order.Address</p>
                 <p>Price: @order.Price</p>
                 <p>Products:</p>
-                <div class="alert alert-info mt-3">
-                    @foreach (var item in order.OrderItems)
-                    {
+                @foreach (var item in order.OrderItems)
+                {
+                    <div class="alert alert-info mt-3">
                         <p>Manufacturer: @item.Item.Manufacturer</p>
                         <p>Model name: @item.Item.ModelName</p>
-                    }
-                </div>
-                
+                    </div>
+                }
                 
             </div>
         }

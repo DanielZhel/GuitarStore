@@ -24,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     
   </ItemGroup>
 
@@ -31,10 +32,6 @@
     <ProjectReference Include="..\GuitarStore.DS\GuitarStore.DS.csproj" />
     <ProjectReference Include="..\GuitarStore.Entities\GuitarStore.Entities.csproj" />
     <ProjectReference Include="..\StoreDb\GuitarStore.EF.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,7 @@ namespace GuitarStore.EF.AuthDb.Context
             optionBuilder.UseSqlServer("Server=localhost;Database=AuthServer;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate = True");
 
         }
+
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿using GuitarStore.Entities.Entities;
 
-namespace GuitarStore.DS.Services
+namespace GuitarStore.DS.StoreServices
 {
     public interface IStoreService
     {

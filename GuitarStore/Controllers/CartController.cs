@@ -1,11 +1,6 @@
-﻿using GuitarStore.DS.Services;
-using GuitarStore.EF;
-using GuitarStore.Entities.Entities;
-using GuitarStore.Models;
+﻿using GuitarStore.DS.StoreServices;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GuitarStore.Controllers
 {
@@ -25,7 +20,6 @@ namespace GuitarStore.Controllers
             return View(items);
 
         }
-
         public async Task<RedirectToActionResult> AddToCart(int itemId)
         {
             if (HttpContext.Session.GetString("SessionId") == null)

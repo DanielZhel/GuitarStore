@@ -1,9 +1,8 @@
 ﻿using GuitarStore.EF.GuitarStoreDb.Context;
 using GuitarStore.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
-namespace GuitarStore.DS.Services
+namespace GuitarStore.DS.StoreServices
 {
     public class ShoppingCartItemService: IShoppingCartService
     {
@@ -26,17 +25,13 @@ namespace GuitarStore.DS.Services
                 };
                 _guitarStoreDbContext.ShopCartItems.Add(shopCartItem);
                 _guitarStoreDbContext.SaveChanges();
-
             }
-           
         }
         public async Task<List<ShopCartItem>> GetShopCartItems(string sessionId)
         {
             var shopCartItems = _guitarStoreDbContext.ShopCartItems.Where(x => x.SessionId == sessionId && x.OrderId == 0).Include(x => x.Item).ToList();
             return shopCartItems;
         }
-
-
         public async Task RemoveFromCart (int shopCartItemId)
         {
             var item = _guitarStoreDbContext.ShopCartItems.Where(i => i.Id == shopCartItemId).Single();
